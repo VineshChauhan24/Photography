@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--app:cardUseCompatPadding="true"-->
+    <!--app:cardPreventCornerOverlap="true"-->
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_rounded_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/header_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/user_iv"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="9dp"
+                android:contentDescription=""
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/user_iv"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="Ansari Sufiyan"
+                    android:id="@+id/display_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/timestamp_tv"
+                    android:layout_width="wrap_content"
+                    android:text="32 minutes ago"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray15"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/post_iv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/gray9"
+            android:contentDescription=""
+            android:scaleType="centerCrop" />
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:background="@drawable/shape_gray1_semi_rounded_rectangle"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="?android:attr/dividerHorizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Like"
+                    android:textColor="@color/gray15"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/dividerVertical" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Comment"
+                    android:textColor="@color/gray15"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/dividerVertical" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Share"
+                    android:textColor="@color/gray15"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/item_swipe_left_indicator"
+        android:alpha="0"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:background="#A5F" />
+
+    <View
+        android:visibility="gone"
+
+        android:id="@+id/item_swipe_right_indicator"
+        android:alpha="0"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="right"
+        android:background="#5AF" />
+
+</FrameLayout>

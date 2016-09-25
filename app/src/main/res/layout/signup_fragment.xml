@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:listbuddies="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:gravity="center"
+    android:background="@drawable/parallax"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="75dp"
+        android:layout_gravity="center"
+        android:id="@+id/profile"
+        android:layout_height="75dp" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/name"
+            android:textColor="@color/whitesmoke"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/email"
+        android:textColor="@color/whitesmoke"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email" />
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/password"
+        android:textColor="@color/whitesmoke"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password" />
+</android.support.design.widget.TextInputLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/sighnup"
+        android:text="SignUp"
+        android:textColor="@color/whitesmoke"
+        android:background="@color/transparent_black_eighty"
+        android:layout_height="wrap_content" />
+</LinearLayout>
