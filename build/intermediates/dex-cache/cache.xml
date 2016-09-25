@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/asna/Android/Photographer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="b4f44f7d389d02cb5295f58f6adda60e91da1ba7">
-        <dex dex="/Users/asna/Android/Photographer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_69056b743350bbe46bd9aa7ec98aaf06c469358a/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />

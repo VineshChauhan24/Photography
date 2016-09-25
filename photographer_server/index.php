@@ -21,7 +21,7 @@ function get_user_data($uid) {
  if (empty($uid))
 
    return NULL;
- $user = mysql_fetch_assoc(mysql_query("select * from `ly_users` where `uid`='$uid'"));
+ $user = mysql_fetch_assoc(mysql_query("select * from `blog_users` where `id`='$uid'"));
 
  return $user;
  //return  array("message" => $user,"login_token" => $login_token, "err-code" => "0");
@@ -43,13 +43,17 @@ function get_email($email) {
 function register_app_user($data)
 {
 
+ //$data = json_decode($data);
 
- $name = json_encode($data->name);
- $email = json_encode($data->email);
- $password = json_encode($data->password);
- $profile = json_encode($data->profile);
- $login_token = "jhjsdvjd";
+ $name = $data['name'];
+ $email = $data['email'];
+ $password = $data['password'];
+ $profile = $data['profile'];
+ $login_token = generateRandomString(10);
  $user = get_email($email);
+ $id = getFileName();
+ $path = "uploads/$id.png";
+ $actualpath = "http://infiniteloops.info/blog/volley/$path";
 
  if($user)
  {
@@ -57,10 +61,11 @@ function register_app_user($data)
  }
  else
  {
-   $query = "insert  into `blog_users` (`name`,`email`,`password`,`device_token`,`profile`,`date_of_creation`) values('$name','$email',md5('$password'),'$login_token','$profile',NOW())";
+   $query = "insert  into `blog_users` (`name`,`email`,`password`,`device_token`,`profile`,`date_of_creation`) values('$name','$email',md5('$password'),'$login_token','$actualpath',NOW())";
    if(mysql_query($query))
    {
      $u_id = mysql_insert_id();
+     file_put_contents($path,base64_decode($profile));
      $result = mysql_fetch_assoc(mysql_query("select * from blog_users where id='$u_id'"));
      return array("err-code"=>0,"message"=>"Thank You! You are successfully signed-up.","user"=>$result);
    }
@@ -76,17 +81,15 @@ function register_app_user($data)
 function user_login($data)
 {
 
- $email = mysql_real_escape_string($data->email);
+ $email = $data['email'];
+ $password = md5($data['password']);
 
-
- $password = md5(mysql_real_escape_string($data->password));
-
- $query = "select lu.*, lup.city, lup.phone_no,lup.name,lup.gender,lup.image,lup.thumbnail    from ly_users as lu join ly_user_profile as lup on lup.uid=lu.uid where lu.username='$email' and password='$password' ";
+ $query = "select * FROM blog_users where email='$email' and password='$password'";
 
 
  if($user = mysql_fetch_assoc(mysql_query($query)))
  {
-   return array("err-code"=>300,"message"=>"This account is banned by the Lyker admin.");
+   return array("err-code"=>0,"message"=>"Successfully login","user"=>$user);
  }
 
  else
@@ -95,21 +98,12 @@ function user_login($data)
  }
 }
 $req = @file_get_contents('php://input');
-
-$name = $_POST['name'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$profile = $_POST['profile'];
 $method = $_POST['method'];
-
-$input = array($name, $email, $password, $profile);
-$result = json_encode($input);
-
 if(isset($method))
 {
  if (function_exists($method))
  {
-   echo json_encode($method($result));
+   echo json_encode($method($_POST));
 
  }
 
@@ -122,4 +116,19 @@ else
 {
  echo "method not set ".$method;
 }
+//ImagickPixel
+/*
+		We are generating the file name
+		so this method will return a file name for the image to be upload
+	*/
+	function getFileName(){
+		$sql = "SELECT max(id) as id FROM blog_users";
+		$result = mysql_fetch_array(mysql_query($sql));
+
+		mysql_close($con);
+		if($result['id']==null)
+			return 1;
+		else
+			return ++$result['id'];
+	}
 ?>

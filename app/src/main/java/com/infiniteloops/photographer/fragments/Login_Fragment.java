@@ -95,6 +95,7 @@ public class Login_Fragment extends Fragment {
         startActivity(new Intent(getContext(), MainActivity.class));
         SessionManager sm = new SessionManager(getContext());
         sm.setLogin(true);
+        getActivity().finish();
 
 
     }

@@ -1,7 +1,8 @@
 package com.infiniteloops.photographer.Activity;
- 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,12 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.infiniteloops.photographer.R;
 import com.infiniteloops.photographer.demo.Data;
+import com.infiniteloops.photographer.utils.SessionManager;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -165,6 +168,38 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
-        finish();
+
+        show_alert();
+    }
+    public void show_alert(){
+        AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+                MainActivity.this);
+// Setting Dialog Message
+        alertDialog2.setMessage("Are you sure you want logout?");
+
+// Setting Positive "Yes" Btn
+        alertDialog2.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        Toast.makeText(getApplicationContext(),
+                                "Successfully Logged Out", Toast.LENGTH_SHORT)
+                                .show();
+                        finish();
+                        SessionManager sm = new SessionManager(MainActivity.this);
+                        sm.setLogin(false);
+                    }
+                });
+
+// Setting Negative "NO" Btn
+        alertDialog2.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+// Showing Alert Dialog
+        alertDialog2.show();
     }
 }
