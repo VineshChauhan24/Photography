@@ -64,6 +64,7 @@ dependencies {
     compile 'com.lorentzos.swipecards:library:1.0.9@aar'
     compile 'com.github.lawloretienne:quickreturn:0.0.3'
     compile 'com.github.bumptech.glide:glide:3.5.1'
+    compile project(':universal-image-loader-1.8.6-with-sources')
 
 }
 
